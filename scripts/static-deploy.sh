@@ -1,17 +1,17 @@
 #!/bin/bash
 
-echo "Building static site..."
+# Exit on error
+set -e
+
+echo "🏗️ Building the application..."
 npm run build
 
-echo "Creating deployment package..."
-rm -rf deploy
-mkdir -p deploy
-cp -r out/* deploy/
+echo "🧹 Cleaning up old files..."
+rm -rf deploy/_next/cache
 
-echo "Fixing asset paths..."
-node scripts/fix-paths.js deploy
+echo "🔍 Fixing paths..."
+node scripts/fix-paths.mjs
 
-echo "Static site is ready in the 'deploy' directory!"
-echo "You can now upload the contents of the 'deploy' directory to your web server."
-echo ""
-echo "To test locally, you can run: npx serve deploy"
+echo "✅ Build completed successfully!"
+echo "📂 Static files are ready in the 'deploy' directory"
+echo "🚀 You can now copy the contents of the 'deploy' directory to your Apache server's document root"

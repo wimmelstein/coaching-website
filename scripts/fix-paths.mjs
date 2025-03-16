@@ -1,41 +1,36 @@
-import fs from 'fs';
-import path from 'path';
+import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
 
-function fixPaths(content) {
-  // Fix background image paths in Tailwind CSS classes
-  content = content.replace(/bg-\[url\(&#x27;"?\/images\//g, 'bg-[url(\'images/');
-  content = content.replace(/bg-\[url\(&#x27;"?images\//g, 'bg-[url(\'images/');
-  content = content.replace(/&#x27;\)\]/g, '\')]');
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const deployDir = join(__dirname, '../deploy')
+
+function processHtmlFile(filePath) {
+  let content = readFileSync(filePath, 'utf8')
   
-  // Fix other paths
-  content = content.replace(/href="\/(?!http|#|mailto|tel)/g, 'href="');
-  content = content.replace(/src="\/(?!http)/g, 'src="');
+  // Fix paths in HTML files
+  content = content.replace(/"\/_next\//g, '"/next/')
+  content = content.replace(/"\/images\//g, '"/images/')
   
-  return content;
+  writeFileSync(filePath, content)
 }
 
 function processDirectory(dir) {
-  const files = fs.readdirSync(dir);
+  const files = readdirSync(dir)
   
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
+  for (const file of files) {
+    const fullPath = join(dir, file)
+    const stat = statSync(fullPath)
     
-    if (stat.isDirectory() && !file.startsWith('_next') && file !== 'images') {
-      processDirectory(filePath);
-    } else if (stat.isFile() && file.endsWith('.html')) {
-      console.log(`Processing ${filePath}`);
-      let content = fs.readFileSync(filePath, 'utf8');
-      content = fixPaths(content);
-      fs.writeFileSync(filePath, content);
+    if (stat.isDirectory()) {
+      processDirectory(fullPath)
+    } else if (file.endsWith('.html')) {
+      console.log(`Processing ${fullPath}...`)
+      processHtmlFile(fullPath)
     }
-  });
+  }
 }
 
-const targetDir = process.argv[2];
-if (!targetDir) {
-  console.error('Please provide a target directory');
-  process.exit(1);
-}
-
-processDirectory(targetDir); 
+console.log('Fixing asset paths in HTML files...')
+processDirectory(deployDir)
+console.log('Path fixing completed!') 
