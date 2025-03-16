@@ -31,6 +31,14 @@ export const en = {
     subtitle: "Choose from our range of specialized coaching services, designed to help you achieve your goals",
     items: [
       {
+        title: "Agile Coaching",
+        description: "Transform your organization through Agile practices. As an experienced Scrum Master and coach, I help teams improve collaboration, maintain focus, and deliver valuable results while contributing to broader organizational Agile initiatives."
+      },
+      {
+        title: "Scrum Master Services",
+        description: "Benefit from years of experience in software development and Scrum mastery. I guide teams in maintaining effective processes while keeping the human aspect central, helping them take ownership of their goals and achieve continuous improvement."
+      },
+      {
         title: "Career Coaching",
         description: "Navigate your career path with confidence. Get guidance on job transitions, promotions, and professional development."
       },

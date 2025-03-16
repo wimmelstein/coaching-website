@@ -31,20 +31,28 @@ export const nl = {
     subtitle: "Kies uit ons aanbod van gespecialiseerde coaching diensten, ontworpen om u te helpen uw doelen te bereiken",
     items: [
       {
-        title: "Carrière Coaching",
-        description: "Navigeer uw carrièrepad met vertrouwen. Krijg begeleiding bij functiewisselingen, promoties en professionele ontwikkeling."
+        title: "Agile Coaching",
+        description: "Transformeer uw organisatie door Agile practices. Als ervaren Scrum Master en coach help ik teams bij het verbeteren van samenwerking, het behouden van focus en het leveren van waardevolle resultaten, terwijl we bijdragen aan bredere Agile-initiatieven in de organisatie."
       },
       {
-        title: "Persoonlijke Coaching",
-        description: "Vind balans en richting in uw persoonlijke leven. Ontwikkel strategieën om uw levensdoelen en ambities te verwezenlijken."
+        title: "Scrum Master Diensten",
+        description: "Profiteer van jarenlange ervaring in softwareontwikkeling en Scrum mastery. Ik begeleid teams bij het handhaven van effectieve processen met behoud van het menselijke aspect, en help hen eigenaarschap te nemen over hun doelen en continue verbetering te bereiken."
+      },
+      {
+        title: "Loopbaan Coaching",
+        description: "Navigeer je carrièrepad met vertrouwen. Krijg begeleiding bij functiewisselingen, promoties en professionele ontwikkeling."
+      },
+      {
+        title: "Life Coaching",
+        description: "Vind balans en richting in je persoonlijke leven. Ontwikkel strategieën om je levensdoelen en ambities te bereiken."
       },
       {
         title: "Leiderschapsontwikkeling",
-        description: "Verbeter uw leiderschapsvaardigheden en leer anderen effectief te inspireren en begeleiden in elke organisatorische omgeving."
+        description: "Verbeter je leiderschapsvaardigheden en leer anderen effectief te inspireren en te begeleiden in elke organisatorische omgeving."
       },
       {
         title: "Prestatie Coaching",
-        description: "Optimaliseer uw prestaties en productiviteit. Leer technieken om uit te blinken in uw professionele en persoonlijke ondernemingen."
+        description: "Optimaliseer je prestaties en productiviteit. Leer technieken om uit te blinken in je professionele en persoonlijke ondernemingen."
       }
     ]
   },
